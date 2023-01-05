@@ -41,7 +41,7 @@ public class JpaMain {
 	private static void 준영속_변경(EntityManager em) {
 		// 준영속 상태가 되면 commit 되어도 아무일도 일어나지 않는다.
 		Member member = em.find(Member.class,150L);
-		member.setName("asdfsaf");
+		member.setUsername("asdfsaf");
 		// 준영속 상태로 변경하는 방법
 		em.detach(member); // member 를 준영속상태로 변경
 		em.clear(); // entity manager 초기화
@@ -61,7 +61,7 @@ public class JpaMain {
 	private static void 엔티티_변경_감지(EntityManager em) {
 		// 최초 시점을 스냅샷으로 저장. 그 값과 비교하여 변경이 이뤄지면 persist 안해도 자동으로 update 된다.
 		Member member = em.find(Member.class,150L);
-		member.setName("zzzzz");
+		member.setUsername("zzzzz");
 
 		System.out.println(">>>>>>>>>");
 	}
@@ -88,7 +88,7 @@ public class JpaMain {
 		// 비영속
 		Member member = new Member();
 		member.setId(101L);
-		member.setName("Hello jpa");
+		member.setUsername("Hello jpa");
 		// 영속
 		System.out.println(">>>>>> before");
 		em.persist(member);
@@ -97,14 +97,14 @@ public class JpaMain {
 		Member findMember = em.find(Member.class, 101L);
 
 		System.out.println("findMember.getId() = " + findMember.getId());
-		System.out.println("findMember.getName() = " + findMember.getName());
+		System.out.println("findMember.getName() = " + findMember.getUsername());
 	}
 
 	private static void commit_시점_확인(EntityManager em) {
 		// 비영속
 		Member member = new Member();
 		member.setId(100L);
-		member.setName("Hello jpa");
+		member.setUsername("Hello jpa");
 
 		// 영속
 		System.out.println(">>>>>> before");
@@ -122,7 +122,7 @@ public class JpaMain {
 			.getResultList();
 
 		for (Member member : result) {
-			System.out.println("member.name = " + member.getName());
+			System.out.println("member.name = " + member.getUsername());
 		}
 	}
 }
