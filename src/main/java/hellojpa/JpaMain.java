@@ -15,7 +15,9 @@ public class JpaMain {
 		tx.begin();
 		try {
 			// studyJpaStart(em); // JPA 시작하기
-			studyEntityManager(em, tx);
+			// studyEntityManager(em, tx);
+			studyEntityMapping(em);
+
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
@@ -25,12 +27,20 @@ public class JpaMain {
 		emf.close();
 	}
 
+	private static void studyEntityMapping(EntityManager em) {
+		Member2 member = new Member2();
+		member.setUsername("C");
+		System.out.println(">>>>>>>>>>>>>>>>>>");
+		em.persist(member);
+		System.out.println(">>>>>>>>>>>>>>>>>>");
+	}
+
 	/**
 	 * 영속성 컨텍스트
 	 */
 	private static void studyEntityManager(EntityManager em, EntityTransaction tx) {
 		// commit_시점_확인(em);
-		일차_캐시_테스트(em);
+		// 일차_캐시_테스트(em);
 		// 일차_캐시_테스트2(em);
 		// 쓰기_지연(em);
 		// 엔티티_변경_감지(em);
