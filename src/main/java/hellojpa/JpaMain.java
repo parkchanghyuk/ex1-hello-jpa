@@ -30,7 +30,7 @@ public class JpaMain {
 	 */
 	private static void studyEntityManager(EntityManager em, EntityTransaction tx) {
 		// commit_시점_확인(em);
-		// 일차_캐시_테스트(em);
+		일차_캐시_테스트(em);
 		// 일차_캐시_테스트2(em);
 		// 쓰기_지연(em);
 		// 엔티티_변경_감지(em);

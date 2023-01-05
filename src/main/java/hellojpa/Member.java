@@ -5,11 +5,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "MEMBER ")
+@Table(name = "MBR")
 public class Member {
 	@Id
 	private Long id;
 	private String name;
+	private Long age;
 
 	public Member() {
 
