@@ -1,17 +1,10 @@
-package hellojpa;
-
-import java.time.LocalDateTime;
+package hellojpa.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
 @Entity
 @SequenceGenerator(
@@ -20,18 +13,17 @@ import javax.persistence.Table;
 	initialValue = 1, allocationSize = 50)
 public class Member2 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,
-		generator = "MEMBER_SEQ_GENERATOR")
+	@GeneratedValue
 	private Long id;
-	@Column(name = "name")
-	private String username;
+	@Column(name = "USERNAME")
+	private String name;
 
 	public Member2() {
 	}
 
 	public Member2(Long id, String name) {
 		this.id = id;
-		this.username = name;
+		this.name = name;
 	}
 
 	public Long getId() {
@@ -42,11 +34,11 @@ public class Member2 {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getName() {
+		return name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 }

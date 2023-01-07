@@ -1,4 +1,4 @@
-package hellojpa;
+package hellojpa.domain;
 
 import java.time.LocalDateTime;
 
@@ -8,16 +8,15 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import hellojpa.RoleType;
 
 @Entity
 public class Member {
 	@Id
 	private Long id;
-	@Column(name = "name")
-	private String username;
+	@Column(name = "USERNAME")
+	private String name;
 	private Integer age;
 	@Enumerated(EnumType.STRING)
 	private RoleType roleType;
@@ -26,13 +25,16 @@ public class Member {
 	private LocalDateTime createdDate;
 	private LocalDateTime lastModifiedDate;
 
+	@Column(name = "TEAM_ID")
+	private Long teamId;
+
 	public Member() {
 
 	}
 
 	public Member(long id, String name) {
 		this.id = id;
-		this.username = name;
+		this.name = name;
 	}
 
 	public Long getId() {
@@ -43,12 +45,12 @@ public class Member {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getName() {
+		return name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Integer getAge() {
@@ -89,5 +91,13 @@ public class Member {
 
 	public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
+	}
+
+	public Long getTeamId() {
+		return teamId;
+	}
+
+	public void setTeamId(Long teamId) {
+		this.teamId = teamId;
 	}
 }
